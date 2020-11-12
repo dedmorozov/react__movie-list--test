@@ -1,0 +1,20 @@
+.card {
+  height: 160px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.card__img {
+  height: 120px;
+  box-shadow: 1px solid black;
+}
+
+.description__title {
+  font-size: 16px;
+  color: #333;
+}
+.description__year {
+  font-size: 14px;
+  color: #b4b4b4;
+}
+
+/*# sourceMappingURL=MovieCard.css.map */
