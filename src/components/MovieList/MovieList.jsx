@@ -2,27 +2,21 @@ import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { MovieCard } from '../MovieCard/MovieCard';
 // import { Portal } from '../Portal/Portal';
-import { getShow } from '../../components/api';
+// import { getShow } from '../../components/api';
 
 // const list = 'http://api.tvmaze.com/shows';
 import televisor from '../../styles/images/televisor.png';
 
 export class MovieList extends PureComponent {
-  state = {
-    date: '10 июля 2018',
-  }
 
   render() {
     // const currentDay = .find(x => x.id === selectedDay);
-    const { date } = this.state;
 
     return (
       // <>
         <div className="content">
-          <div className="content__date date">
-            <h1 className="date__text">{date}</h1>
-          </div>
           <ul className="content__list">
+            {/* if (selectedDay) */}
             {/* {list.map(item => (
               <li key={item.id}>
                 <MovieCard

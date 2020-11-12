@@ -2,6 +2,8 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import { MovieList } from './components/MovieList/MovieList';
 
+import { request } from './components/api';
+
 import televisor from './styles/images/televisor.png';
 
 import './App.css';
@@ -9,27 +11,33 @@ import '../../app/node_modules/react-calendar/dist/Calendar.css';
 
 class App extends React.Component {
   state = {
-    selectedDay: '',
+    selectedDay: null,
     isSelected: false,
   };
 
   onDaySelected = (selected) => {
     this.setState({
-      selectedDay: selected,
+      selectedDay: new Date(selected),
       isSelected: true,
     });
   }
 
+  getShow(date) {
+    const show = request(`/schedule?country=US&date=${date}`);
+  
+    return show;
+  }
+
   goBack = () => {
     this.setState({
-      selectedDay: '',
+      selectedDay: null,
       isSelected: false,
     });
   }
 
   render() {
     const { selectedDay, isSelected } = this.state;
-    const { showId } = this.props;
+    // const { showId } = this.props;
     const { onDaySelected } = this;
 
     return (
@@ -41,7 +49,7 @@ class App extends React.Component {
         </header>
         {!isSelected
           ? (
-            <div>
+            <>
               <section className="block">
                 <div className="block__start start">
                   <div>
@@ -58,17 +66,59 @@ class App extends React.Component {
               </section>
 
               <Calendar onClickDay={onDaySelected} />
-            </div>
+            </>
             )
           : (
-            <div>
+            <>
+              <div className="content__date date">
+                <h1 className="date__text">{selectedDay.toLocaleString('ru', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  }).slice(0, -3)}
+                </h1>
+              </div>
+              
               <button
                 type="button"
                 onClick={this.goBack}
                 className="header__button button"
-              />
-              <MovieList />
-            </div>
+                />
+              {/* <MovieList /> */}
+
+              <div className="content">
+                <ul className="content__list">
+                  {request(`/shows`)}
+                  {/* {list.map(item => (
+                    <li key={item.id}>
+                      <MovieCard
+                        title={item.show.name}
+                        year={item.show.premiered.join('', 4)}
+                        imgUrl={item.image.medium}
+                      />
+                    </li>
+                  ))} */}
+                  <li>
+                    <div className="card">
+                      <div className="card__img">
+                        <figure>
+                          {/* <img
+                            src={televisor}
+                            alt="Film logo"
+                          /> */}
+                        </figure>
+                      </div>
+
+                      <div className="card__description description">
+                        <h5 className="description__title">Теория большого взрыва</h5>
+                        <p className="description__year">2013</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </>
           )
         }
       </>

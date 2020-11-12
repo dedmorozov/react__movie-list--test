@@ -1,6 +1,6 @@
 const BASE_URL = 'http://api.tvmaze.com';
 
-function request(url) {
+export function request(url) {
   return fetch(`${BASE_URL}${url}`)
     .then((response) => {
       if (!response.ok) {
@@ -9,11 +9,14 @@ function request(url) {
 
       return response.json();
     })
-    .then(result => result.data);
+    .then(result => {
+      console.log(result[145].id);
+      return result;
+    });
 }
 
-export async function getShow(showId) {
-  const show = await request(`/shows/${showId}`);
+// export async function getShow(showId) {
+//   const show = await request(`/schedule/${showId}`);
 
-  return show;
-}
+//   return show;
+// }
