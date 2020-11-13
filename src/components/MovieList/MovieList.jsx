@@ -1,48 +1,35 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { MovieCard } from '../MovieCard/MovieCard';
-// import { Portal } from '../Portal/Portal';
-// import { getShow } from '../../components/api';
 
-// const list = 'http://api.tvmaze.com/shows';
-import televisor from '../../styles/images/televisor.png';
+import { getApi } from '../api'
 
 export class MovieList extends PureComponent {
+  state = {
+    shows: [],
+  }
+
+  componentDidMount() {
+    getApi('/schedule').then(result => this.setState({shows: result}))
+  }
 
   render() {
-    // const currentDay = .find(x => x.id === selectedDay);
+    const { shows } = this.state;
 
     return (
       // <>
         <div className="content">
-          <ul className="content__list">
-            {/* if (selectedDay) */}
-            {/* {list.map(item => (
-              <li key={item.id}>
+          <ul className="content__list list">
+            {shows.map(item => (
+              <li key={item.show.id} className="list__item">
                 <MovieCard
                   title={item.show.name}
-                  year={item.show.premiered.join('', 4)}
-                  imgUrl={item.image.medium}
+                  year={(item.show.premiered).split('', 4)}
+                  // imgUrl={item.show.image.original}
+                  imgUrl={"http://static.tvmaze.com/uploads/images/medium_portrait/214/535400.jpg"}
                 />
               </li>
-            ))} */}
-            <li>
-              <div className="card">
-                <div className="card__img">
-                  <figure>
-                    {/* <img
-                      src={televisor}
-                      alt="Film logo"
-                    /> */}
-                  </figure>
-                </div>
-
-                <div className="card__description description">
-                  <h5 className="description__title">Теория большого взрыва</h5>
-                  <p className="description__year">2013</p>
-                </div>
-              </div>
-            </li>
+            ))}
           </ul>
         </div>
       // </>

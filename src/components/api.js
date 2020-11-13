@@ -8,15 +8,11 @@ export function request(url) {
       }
 
       return response.json();
-    })
-    .then(result => {
-      console.log(result[145].id);
-      return result;
     });
 }
 
-// export async function getShow(showId) {
-//   const show = await request(`/schedule/${showId}`);
+export async function getApi(endpoint) {
+  const show = await request(endpoint);
 
-//   return show;
-// }
+  return show;
+}

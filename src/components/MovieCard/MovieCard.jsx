@@ -8,9 +8,10 @@ export const MovieCard = ({
 }) => (
   <>
     <div className="card">
-      <div className="card__img">
+      <div>
         <figure>
           <img
+            className="card__img" 
             src={imgUrl}
             alt="Film logo"
           />

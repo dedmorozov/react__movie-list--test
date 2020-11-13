@@ -2,8 +2,6 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import { MovieList } from './components/MovieList/MovieList';
 
-import { request } from './components/api';
-
 import televisor from './styles/images/televisor.png';
 
 import './App.css';
@@ -22,12 +20,6 @@ class App extends React.Component {
     });
   }
 
-  getShow(date) {
-    const show = request(`/schedule?country=US&date=${date}`);
-  
-    return show;
-  }
-
   goBack = () => {
     this.setState({
       selectedDay: null,
@@ -37,8 +29,10 @@ class App extends React.Component {
 
   render() {
     const { selectedDay, isSelected } = this.state;
-    // const { showId } = this.props;
     const { onDaySelected } = this;
+    const { shows } = this.state;
+    // const filteredShows = shows.filter(show => show.airdate === selectedDay);
+    
 
     return (
       <>
@@ -84,40 +78,7 @@ class App extends React.Component {
                 onClick={this.goBack}
                 className="header__button button"
                 />
-              {/* <MovieList /> */}
-
-              <div className="content">
-                <ul className="content__list">
-                  {request(`/shows`)}
-                  {/* {list.map(item => (
-                    <li key={item.id}>
-                      <MovieCard
-                        title={item.show.name}
-                        year={item.show.premiered.join('', 4)}
-                        imgUrl={item.image.medium}
-                      />
-                    </li>
-                  ))} */}
-                  <li>
-                    <div className="card">
-                      <div className="card__img">
-                        <figure>
-                          {/* <img
-                            src={televisor}
-                            alt="Film logo"
-                          /> */}
-                        </figure>
-                      </div>
-
-                      <div className="card__description description">
-                        <h5 className="description__title">Теория большого взрыва</h5>
-                        <p className="description__year">2013</p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
+              <MovieList />
             </>
           )
         }
