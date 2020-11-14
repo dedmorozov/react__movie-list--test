@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.tvmaze.com';
+const BASE_URL = 'https://api.tvmaze.com';
 
 export function request(url) {
   return fetch(`${BASE_URL}${url}`)
