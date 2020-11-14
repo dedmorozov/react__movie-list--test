@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/react__movie-list--test/static/css/main.a16ad6de.chunk.css",
-    "main.js": "/react__movie-list--test/static/js/main.41f635fd.chunk.js",
-    "main.js.map": "/react__movie-list--test/static/js/main.41f635fd.chunk.js.map",
+    "main.css": "/react__movie-list--test/static/css/main.1cf90782.chunk.css",
+    "main.js": "/react__movie-list--test/static/js/main.4b0fe75d.chunk.js",
+    "main.js.map": "/react__movie-list--test/static/js/main.4b0fe75d.chunk.js.map",
     "runtime-main.js": "/react__movie-list--test/static/js/runtime-main.2181c23f.js",
     "runtime-main.js.map": "/react__movie-list--test/static/js/runtime-main.2181c23f.js.map",
     "static/css/2.3680e2d6.chunk.css": "/react__movie-list--test/static/css/2.3680e2d6.chunk.css",
-    "static/js/2.dba20ab4.chunk.js": "/react__movie-list--test/static/js/2.dba20ab4.chunk.js",
-    "static/js/2.dba20ab4.chunk.js.map": "/react__movie-list--test/static/js/2.dba20ab4.chunk.js.map",
+    "static/js/2.56805349.chunk.js": "/react__movie-list--test/static/js/2.56805349.chunk.js",
+    "static/js/2.56805349.chunk.js.map": "/react__movie-list--test/static/js/2.56805349.chunk.js.map",
     "static/js/3.cdcc9300.chunk.js": "/react__movie-list--test/static/js/3.cdcc9300.chunk.js",
     "static/js/3.cdcc9300.chunk.js.map": "/react__movie-list--test/static/js/3.cdcc9300.chunk.js.map",
     "index.html": "/react__movie-list--test/index.html",
     "static/css/2.3680e2d6.chunk.css.map": "/react__movie-list--test/static/css/2.3680e2d6.chunk.css.map",
-    "static/css/main.a16ad6de.chunk.css.map": "/react__movie-list--test/static/css/main.a16ad6de.chunk.css.map",
-    "static/js/2.dba20ab4.chunk.js.LICENSE.txt": "/react__movie-list--test/static/js/2.dba20ab4.chunk.js.LICENSE.txt",
+    "static/css/main.1cf90782.chunk.css.map": "/react__movie-list--test/static/css/main.1cf90782.chunk.css.map",
+    "static/js/2.56805349.chunk.js.LICENSE.txt": "/react__movie-list--test/static/js/2.56805349.chunk.js.LICENSE.txt",
     "static/media/App.css": "/react__movie-list--test/static/media/headerBackground.ad3fc16b.png",
     "static/media/televisor.3bca90b2.png": "/react__movie-list--test/static/media/televisor.3bca90b2.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2181c23f.js",
     "static/css/2.3680e2d6.chunk.css",
-    "static/js/2.dba20ab4.chunk.js",
-    "static/css/main.a16ad6de.chunk.css",
-    "static/js/main.41f635fd.chunk.js"
+    "static/js/2.56805349.chunk.js",
+    "static/css/main.1cf90782.chunk.css",
+    "static/js/main.4b0fe75d.chunk.js"
   ]
 }
