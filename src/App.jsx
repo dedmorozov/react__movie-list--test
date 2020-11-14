@@ -7,8 +7,15 @@ import televisor from './styles/images/televisor.png';
 import { getApi } from './components/api';
 
 import './App.css';
-// eslint-disable-next-line
 import 'react-calendar/dist/Calendar.css';
+
+const filterShows = (shows = [], selectedDay) => shows
+  .filter(show => show.airdate === selectedDay
+    .toLocaleString()
+    .slice(0, -10)
+    .split('.')
+    .reverse()
+    .join('-'));
 
 class App extends React.Component {
   state = {
@@ -23,7 +30,7 @@ class App extends React.Component {
 
   onDaySelected = (selected) => {
     this.setState({
-      selectedDay: new Date(selected),
+      selectedDay: selected,
       isSelected: true,
     });
   }
@@ -37,20 +44,21 @@ class App extends React.Component {
 
   render() {
     let preparedShows = [];
+
     const {
       selectedDay,
       isSelected,
       shows,
     } = this.state;
-    const { onDaySelected } = this;
+
+    const formattedDate = selectedDay.toLocaleString('ru', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).slice(0, -3);
 
     if (isSelected) {
-      preparedShows = shows.filter(show => show.airdate === selectedDay
-        .toLocaleString()
-        .slice(0, -10)
-        .split('.')
-        .reverse()
-        .join('-'));
+      preparedShows = filterShows(shows, selectedDay);
     }
 
     return (
@@ -79,18 +87,14 @@ class App extends React.Component {
                 </div>
               </section>
 
-              <Calendar onClickDay={onDaySelected} />
+              <Calendar onClickDay={this.onDaySelected} />
             </>
           )
           : (
             <>
               <div className="content__date date">
                 <h1 className="date__text">
-                  {selectedDay.toLocaleString('ru', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  }).slice(0, -3)}
+                  {formattedDate}
                 </h1>
               </div>
               <button
