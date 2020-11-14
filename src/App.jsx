@@ -4,14 +4,22 @@ import { MovieList } from './components/MovieList/MovieList';
 
 import televisor from './styles/images/televisor.png';
 
+import { getApi } from './components/api';
+
 import './App.css';
-import '../../app/node_modules/react-calendar/dist/Calendar.css';
+// eslint-disable-next-line
+import 'react-calendar/dist/Calendar.css';
 
 class App extends React.Component {
   state = {
-    selectedDay: null,
+    selectedDay: '',
     isSelected: false,
+    shows: [],
   };
+
+  componentDidMount() {
+    getApi('/schedule/full').then(result => this.setState({ shows: result }));
+  }
 
   onDaySelected = (selected) => {
     this.setState({
@@ -22,22 +30,33 @@ class App extends React.Component {
 
   goBack = () => {
     this.setState({
-      selectedDay: null,
+      selectedDay: '',
       isSelected: false,
     });
   }
 
   render() {
-    const { selectedDay, isSelected } = this.state;
+    let preparedShows = [];
+    const {
+      selectedDay,
+      isSelected,
+      shows,
+    } = this.state;
     const { onDaySelected } = this;
-    const { shows } = this.state;
-    // const filteredShows = shows.filter(show => show.airdate === selectedDay);
-    
+
+    if (isSelected) {
+      preparedShows = shows.filter(show => show.airdate === selectedDay
+        .toLocaleString()
+        .slice(0, -10)
+        .split('.')
+        .reverse()
+        .join('-'));
+    }
 
     return (
       <>
         <header className="container header">
-          <div className="header__title">  
+          <div className="header__title">
             <h1 className="header__title header__title--text">SUPER FILM</h1>
           </div>
         </header>
@@ -51,39 +70,43 @@ class App extends React.Component {
                       className="start__img"
                       src={televisor}
                       alt="tv"
-                      />
+                    />
                   </div>
                   <p className="start__text">
-                    Для получения списка сериалов, пожалуйста, выберите необходимый месяц и день
+                    Для получения списка сериалов, пожалуйста,
+                    выберите необходимый месяц и день
                   </p>
                 </div>
               </section>
 
               <Calendar onClickDay={onDaySelected} />
             </>
-            )
+          )
           : (
             <>
+              {/* eslint-disable-next-line */}
               <div className="content__date date">
-                <h1 className="date__text">{selectedDay.toLocaleString('ru', {
+                <h1 className="date__text">
+                  {selectedDay.toLocaleString('ru', {
                     year: 'numeric',
                     month: 'long',
-                    day: 'numeric'
+                    day: 'numeric',
                   }).slice(0, -3)}
                 </h1>
               </div>
-              
               <button
                 type="button"
                 onClick={this.goBack}
                 className="header__button button"
-                />
-              <MovieList />
+              />
+              <div className="content">
+                <MovieList preparedShows={preparedShows} />
+              </div>
             </>
           )
         }
       </>
-      );
+    );
   }
 }
 

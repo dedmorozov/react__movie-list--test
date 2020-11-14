@@ -79,6 +79,13 @@ body {
   border-color: black;
 }
 
+.button__link {
+  height: 115px;
+  border: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.322);
+  outline: none;
+}
+
 .block {
   padding: 15.5% 0;
 }
@@ -112,7 +119,7 @@ body {
 }
 
 .card {
-  height: 130px;
+  height: 160px;
   padding: 15px 20px 0;
   display: flex;
   flex-direction: row;
@@ -121,7 +128,6 @@ body {
 }
 .card__img {
   height: 115px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
 }
 
 .description {
@@ -133,6 +139,17 @@ body {
 }
 .description__year {
   color: #b4b4b4;
+  font-size: 16px;
+}
+.description__episode {
+  height: 40px;
+  width: 180px;
+  border-radius: 5px;
+  line-height: 40px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #f1f1f1;
+  color: #333333;
 }
 
 .list__item {
