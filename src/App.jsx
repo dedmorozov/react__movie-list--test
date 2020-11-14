@@ -84,7 +84,6 @@ class App extends React.Component {
           )
           : (
             <>
-              {/* eslint-disable-next-line */}
               <div className="content__date date">
                 <h1 className="date__text">
                   {selectedDay.toLocaleString('ru', {

@@ -45,9 +45,9 @@ export class MovieList extends PureComponent {
 }
 
 MovieList.propTypes = {
-  preparedShows: PropTypes.arrayOf,
+  preparedShows: PropTypes.arrayOf(PropTypes.object),
 };
 
 MovieList.defaultProps = {
-  preparedShows: PropTypes.null,
+  preparedShows: [],
 };
